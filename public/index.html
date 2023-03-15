@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="/project/project.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" >
+        
+        
+        <div class="wcloud">
+            <div class="cloud1" style="background-color: white; box-shadow: none"></div>
+            <div class="cloud2" style="background-color: white; box-shadow: none"></div>
+            <div class="cloud3" style="background-color: white; box-shadow: none"></div>
+          </div>
+          <div class="wcloud2">
+            <div class="cloud1" style="background-color: white; box-shadow: none"></div>
+            <div class="cloud2" style="background-color: white; box-shadow: none"></div>
+            <div class="cloud3" style="background-color: white; box-shadow: none"></div>
+          </div>
+        <div class="wave-one"></div>
+        <div class="wave-two"></div>
+        <div class="wave-three"></div>
+
+        <div id="weathercon"><i class="fa-solid fa-sun" style="color
+        :#eccc68  "  ></i>
+        </div>
+
+        <div class="info" >
+
+            <h2 class="location"><i class="fas fa-street-view">{%location%},{%country%}</i></h2>
+            
+            <p id="date">wed |oct |23 |10:49</p>
+            <h1 class="temp">{%tempval%}</h1>
+            
+            <p class="tempminmax" >Min {%tempmin%} | Max {%tempmax%} </p>
+        </div>
+        
+
+
+    </div>
+
+    <script>
+        let currdate=document.getElementById("date");
+        let weathercon=document.getElementById("weathercon");
+
+        const tempstatus="clouds";
+
+        const getcurrentday=()=>{
+            const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            let currentDay=new Date();
+            let day=weekday[currentDay.getDay()];
+            return day;
+
+            
+        }
+
+        // getcurrentday();
+        const getcurrentTime=()=>{
+            const getmonth = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            var currentTime=new Date();
+            var month=getmonth[currentTime.getMonth()];
+            var date=currentTime.getDate();
+            let hours=currentTime.getHours();
+            let mins=currentTime.getMinutes();
+            let perios="AM";
+            if(hours>11)
+            {
+                perios="PM";
+                if(hours>12) hours -=12;
+            }
+            if(mins<10)
+            {
+                mins="0"+mins;
+            }
+
+            
+            // console.log(month+'/'+day);
+            return `${month} ${date} | ${hours}:${mins}${perios}`
+
+        }
+        console.log(getcurrentday()+ " | " + getcurrentTime());
+        currdate.innerHTML=getcurrentday()+ " | " + getcurrentTime();
+
+
+    </script>
+    
+</body>
+</html>
